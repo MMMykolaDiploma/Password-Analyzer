@@ -1,0 +1,179 @@
+body {
+    font-family: Arial, sans-serif;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+h1 {
+    color: #2c3e50;
+    text-align: center;
+}
+
+.container {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.criteria {
+    margin: 20px 0;
+}
+
+.criteria-item {
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s;
+}
+
+.criteria-icon {
+    margin-right: 10px;
+    font-size: 20px;
+    transition: all 0.3s;
+}
+
+.valid {
+    color: #2ecc71;
+}
+
+.invalid {
+    color: #e74c3c;
+}
+
+.result {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 4px;
+    display: none;
+}
+
+.weak {
+    background-color: #ffdddd;
+    border-left: 5px solid #e74c3c;
+}
+
+.medium {
+    background-color: #fff3cd;
+    border-left: 5px solid #f39c12;
+}
+
+.strong {
+    background-color: #ddffdd;
+    border-left: 5px solid #2ecc71;
+}
+
+.tips {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #f0f8ff;
+    border-radius: 4px;
+    display: none;
+}
+
+.password-strength {
+    height: 5px;
+    background: #eee;
+    margin: 10px 0;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.strength-bar {
+    height: 100%;
+    width: 0;
+    transition: width 0.3s, background 0.3s;
+}
+
+.strength-meter {
+    height: 6px;
+    background: #eee;
+    margin: 15px 0;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.strength-bar {
+    height: 100%;
+    width: 0;
+    transition: width 0.3s, background 0.3s;
+}
+
+.strength-meter .weak {
+    width: 33%;
+    background: #e74c3c;
+}
+
+.strength-meter .medium {
+    width: 66%;
+    background: #f39c12;
+}
+
+.strength-meter .strong {
+    width: 100%;
+    background: #2ecc71;
+}
+
+.feedback {
+    margin-top: 15px;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    display: none;
+}
+
+.feedback-warning {
+    color: #dc3545;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.feedback-suggestions {
+    color: #6c757d;
+}
+
+.feedback-suggestions ul {
+    margin-top: 5px;
+    padding-left: 20px;
+}
+
+.crack-time {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #e9ecef;
+    border-radius: 5px;
+    font-size: 0.9em;
+    display: none;
+}
+
+.crack-time.warning {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.crack-time.danger {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+

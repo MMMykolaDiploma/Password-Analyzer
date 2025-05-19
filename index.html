@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Перевірка надійності пароля</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Перевірка надійності пароля</h1>
+    <div class="container">
+        <div class="input-group">
+            <label for="password">Введіть ваш пароль:</label>
+            <input type="password" id="password" placeholder="Введіть пароль">
+        </div>
+        
+        <div class="criteria">
+            <h3>Критерії оцінки:</h3>
+            <div class="criteria-item">
+                <span id="length-icon" class="criteria-icon">❌</span>
+                <span>Мінімум 12 символів</span>
+            </div>
+            <div class="criteria-item">
+                <span id="digit-icon" class="criteria-icon">❌</span>
+                <span>Містить цифри</span>
+            </div>
+            <div class="criteria-item">
+                <span id="uppercase-icon" class="criteria-icon">❌</span>
+                <span>Містить великі літери</span>
+            </div>
+            <div class="criteria-item">
+                <span id="special-icon" class="criteria-icon">❌</span>
+                <span>Містить спецсимволи</span>
+            </div>
+            <div class="criteria-item">
+                <span id="space-icon" class="criteria-icon">✅</span>
+                <span>Не містить пробілів</span>
+            </div>
+        </div>
+        
+        <div id="result" class="result"></div>
+        <div id="tips" class="tips"></div>
+        <div id="feedback" class="feedback"></div>
+        <div id="crack-time" class="crack-time"></div>
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/zxcvbn/4.4.2/zxcvbn.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

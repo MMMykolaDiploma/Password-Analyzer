@@ -14,11 +14,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Scan for secrets with Gitleaks
+      - name: Run Gitleaks scan
         uses: gitleaks/gitleaks-action@v2
         env:
           GITLEAKS_CONFIG: |
-            title = "Gitleaks Config"
+            title = "Password Analyzer Config"
             
             [[rules]]
             id = "ignore-password-examples"
@@ -26,12 +26,11 @@ jobs:
             regex = '''password.*['"].*['"]'''
             tags = ["skip"]
 
-      - name: Upload results
-        if: always()
-        uses: actions/upload-artifact@v3
+      - name: Run ZAP Baseline Scan
+        uses: zaproxy/action-baseline@v0.10.0
         with:
-          name: gitleaks-results
-          path: results.sarif
+          target: 'https://mmmykoladiploma.github.io/Password-Analyzer/'
+          cmd_options: '-a -j -l PASS'
 
   quality-analysis:
     name: Code Quality Analysis
@@ -41,12 +40,12 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: HTML Validation
+      - name: Validate HTML
         uses: validator/validator@v1.3.0
         with:
           ignore: 'CSS'
 
-      - name: ESLint
+      - name: Run ESLint
         uses: stefanoeb/eslint-action@v1
         with:
           files: script.js
@@ -68,13 +67,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Verify files
+      - name: Verify required files
         run: |
           [ -f index.html ] || exit 1
           [ -f style.css ] || exit 1
           [ -f script.js ] || exit 1
 
-      - name: Setup Pages
+      - name: Setup GitHub Pages
         uses: actions/configure-pages@v3
 
       - name: Upload artifact
@@ -83,5 +82,4 @@ jobs:
           path: './'
 
       - name: Deploy to GitHub Pages
-        id: deployment
         uses: actions/deploy-pages@v2

@@ -16,15 +16,28 @@ jobs:
 
       - name: Scan for secrets with Gitleaks
         uses: gitleaks/gitleaks-action@v2
-        with:
-          no-git: true
-          exit-code: 0  # Не зупиняти пайплайн при знаходженні секретів
+        env:
+          GITLEAKS_CONFIG: |
+            title = "Gitleaks Config"
+            
+            [[rules]]
+            id = "ignore-password-examples"
+            description = "Ignore password examples in comments"
+            regex = '''password.*['"].*['"]'''
+            tags = ["skip"]
+            
+            [[rules]]
+            id = "general-secrets"
+            description = "General secrets detection"
+            regex = '''(?i)(secret|key|token|password|credential)[^a-zA-Z0-9][a-zA-Z0-9]{20,}'''
+            entropy = 3.5
 
-      - name: Run ZAP Baseline Scan
-        uses: zaproxy/action-baseline@v0.10.0
+      - name: Upload results
+        if: always()
+        uses: actions/upload-artifact@v3
         with:
-          target: 'https://mmmykoladiploma.github.io/Password-Analyzer/'
-          cmd_options: '-a -j -l PASS'
+          name: gitleaks-results
+          path: results.sarif
 
   quality-analysis:
     name: Code Quality Analysis

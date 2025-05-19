@@ -16,8 +16,8 @@ jobs:
 
       - name: Scan for secrets with Gitleaks
         uses: gitleaks/gitleaks-action@v2
-        with:
-          config-path: .gitleaks.toml
+        env:
+          GITLEAKS_CONFIG: .gitleaks.toml
 
       - name: Run ZAP Baseline Scan
         uses: zaproxy/action-baseline@v0.10.0
@@ -62,11 +62,9 @@ jobs:
 
       - name: Verify files
         run: |
-          echo "Checking required files..."
           [ -f index.html ] || exit 1
           [ -f style.css ] || exit 1
           [ -f script.js ] || exit 1
-          echo "All files present"
 
       - name: Setup Pages
         uses: actions/configure-pages@v3

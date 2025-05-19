@@ -25,12 +25,6 @@ jobs:
             description = "Ignore password examples in comments"
             regex = '''password.*['"].*['"]'''
             tags = ["skip"]
-            
-            [[rules]]
-            id = "general-secrets"
-            description = "General secrets detection"
-            regex = '''(?i)(secret|key|token|password|credential)[^a-zA-Z0-9][a-zA-Z0-9]{20,}'''
-            entropy = 3.5
 
       - name: Upload results
         if: always()

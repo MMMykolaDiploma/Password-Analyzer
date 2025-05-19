@@ -16,6 +16,8 @@ jobs:
 
       - name: Scan for secrets with Gitleaks
         uses: gitleaks/gitleaks-action@v2
+        with:
+          scan-dir: '.'
 
       - name: Run ZAP Baseline Scan
         uses: zaproxy/action-baseline@v0.10.0
@@ -23,6 +25,7 @@ jobs:
           target: 'https://mmmykoladiploma.github.io/Password-Analyzer/'
           rules_file_name: 'password-analyzer-rules.tsv'
           cmd_options: '-a -j -l PASS'
+          artifact_name: zap-scan-report
 
   quality-analysis:
     name: Code Quality Analysis
@@ -33,7 +36,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: HTML Validation
-        uses: validator/validator@v1.3.0
+        uses: Cyb3r-Jak3/html5validator-action@v0.4.1
 
       - name: ESLint (if JavaScript files exist)
         uses: stefanoeb/eslint-action@v1

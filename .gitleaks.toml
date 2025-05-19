@@ -1,6 +1,7 @@
-title = "gitleaks config"
+title = "Gitleaks Configuration for Password Analyzer"
 
 [[rules]]
+id = "no-password-examples"
 description = "Ignore password examples in comments"
 regex = '''password.*['"].*['"]'''
-tags = ["skip"]
+tags = ["skip", "false-positive"]

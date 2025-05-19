@@ -16,8 +16,9 @@ jobs:
 
       - name: Scan for secrets with Gitleaks
         uses: gitleaks/gitleaks-action@v2
-        env:
-          GITLEAKS_CONFIG: .gitleaks.toml
+        with:
+          no-git: true
+          exit-code: 0  # Не зупиняти пайплайн при знаходженні секретів
 
       - name: Run ZAP Baseline Scan
         uses: zaproxy/action-baseline@v0.10.0

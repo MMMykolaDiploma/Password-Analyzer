@@ -81,4 +81,4 @@ jobs:
         with:
           target: 'https://mmmykoladiploma.github.io/Password-Analyzer/'
           fail_action: false
-          cmd_options: '-quick -config api.disablekey=true'
+          cmd_options: '-config api.disablekey=true -m 2'

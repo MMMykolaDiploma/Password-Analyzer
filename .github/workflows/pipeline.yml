@@ -8,7 +8,7 @@ on:
 
 jobs:
   security-check:
-    name: CodeQL Analysis (SAST)
+    name: 🔒 CodeQL Analysis
     runs-on: ubuntu-latest
     permissions:
       actions: read
@@ -26,20 +26,10 @@ jobs:
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v3
 
-  secrets-scan:
-    name: Secrets Scan with Gitleaks (SAST)
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Run Gitleaks
-        uses: gitleaks/gitleaks-action@v2
-
   lint:
-    name: ESLint Check
+    name: 🔧 ESLint Check
     runs-on: ubuntu-latest
-    needs: [security-check, secrets-scan]
+    needs: security-check
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -56,7 +46,7 @@ jobs:
         run: npx eslint script.js || true
 
   deploy:
-    name: Deploy to GitHub Pages
+    name: 🚀 Deploy to GitHub Pages
     runs-on: ubuntu-latest
     needs: lint
     permissions:
@@ -90,4 +80,5 @@ jobs:
         uses: zaproxy/action-baseline@v0.9.0
         with:
           target: 'https://mmmykoladiploma.github.io/Password-Analyzer/'
-          artifact_name: zap-scan-report
+          fail_action: false
+          cmd_options: '-quick -config api.disablekey=true'

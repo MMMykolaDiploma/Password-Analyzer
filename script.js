@@ -169,4 +169,34 @@ function showCrackTime(crackTimesSeconds) {
     crackTimeDiv.style.display = 'block';
 }
 
+// Генерація паролю
+document.getElementById('generate-btn').addEventListener('click', function() {
+  const password = generatePassword();
+  document.getElementById('password').value = password;
+  checkPasswordStrength();
+});
 
+function generatePassword() {
+  const length = 12;
+  const uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  const lowercase = 'abcdefghijklmnopqrstuvwxyz';
+  const numbers = '0123456789';
+  const symbols = '!@#$%^&*()_+-=[]{}|;:,.<>?';
+  
+  // Гарантуємо, що пароль містить хоча б по одному символу з кожної категорії
+  let password = [
+    uppercase.charAt(Math.floor(Math.random() * uppercase.length)),
+    lowercase.charAt(Math.floor(Math.random() * lowercase.length)),
+    numbers.charAt(Math.floor(Math.random() * numbers.length)),
+    symbols.charAt(Math.floor(Math.random() * symbols.length))
+  ].join('');
+  
+  // Додаємо випадкові символи до потрібної довжини
+  const allChars = uppercase + lowercase + numbers + symbols;
+  while (password.length < length) {
+    password += allChars.charAt(Math.floor(Math.random() * allChars.length));
+  }
+  
+  // Перемішуємо символи для більшої випадковості
+  return password.split('').sort(() => Math.random() - 0.5).join('');
+}

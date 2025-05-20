@@ -177,3 +177,31 @@ input[type="password"] {
     color: #721c24;
 }
 
+.generate-btn {
+  background-color: #2ecc71; /* Зелений колір */
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.generate-btn:hover {
+  background-color: #27ae60; /* Темніший зелений при наведенні */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.generate-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.password-generator {
+  margin: 15px 0;
+  text-align: center;
+}

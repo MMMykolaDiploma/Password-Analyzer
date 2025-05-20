@@ -1,0 +1,23 @@
+{
+  "name": "pasworchecker",
+  "version": "1.0.0",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MMMykolaDiploma/Password-Analyzer.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MMMykolaDiploma/Password-Analyzer/issues"
+  },
+  "homepage": "https://github.com/MMMykolaDiploma/Password-Analyzer#readme",
+  "description": "",
+  "devDependencies": {
+    "eslint": "^9.27.0"
+  }
+}

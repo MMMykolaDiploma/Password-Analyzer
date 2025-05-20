@@ -8,7 +8,7 @@ on:
 
 jobs:
   security-check:
-    name: 🔒 CodeQL Analysis
+    name: CodeQL Analysis
     runs-on: ubuntu-latest
     permissions:
       actions: read
@@ -27,7 +27,7 @@ jobs:
         uses: github/codeql-action/analyze@v3
 
   lint:
-    name: 🔧 ESLint Check
+    name: ESLint Check
     runs-on: ubuntu-latest
     needs: security-check
     steps:
@@ -46,7 +46,7 @@ jobs:
         run: npx eslint script.js || true
 
   deploy:
-    name: 🚀 Deploy to GitHub Pages
+    name: Deploy to GitHub Pages
     runs-on: ubuntu-latest
     needs: lint
     permissions:
@@ -72,7 +72,7 @@ jobs:
         uses: actions/deploy-pages@v4
 
   dast-scan:
-    name: 🧪 DAST Scan with OWASP ZAP
+    name: DAST Scan with OWASP ZAP
     runs-on: ubuntu-latest
     needs: deploy
     steps:
